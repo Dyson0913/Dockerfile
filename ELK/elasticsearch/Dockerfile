@@ -20,6 +20,7 @@ WORKDIR /home
 #elastic
 Run wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.6.0.deb
 Run sudo dpkg -i elasticsearch-1.6.0.deb
+Run sudo service elasticsearch restart
 
 #kibana
 Run sudo wget https://download.elastic.co/kibana/kibana/kibana-4.1.0-linux-x64.tar.gz
@@ -28,6 +29,6 @@ Run sudo tar xzvf kibana-4.1.0-linux-x64.tar.gz
 
 Run sudo service elasticsearch start
 WORKDIR /home/kibana-4.1.0-linux-x64
-Run bin/kibana
+#Run bin/kibana
 
 EXPOSE 5601

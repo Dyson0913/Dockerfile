@@ -11,6 +11,8 @@ Run echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-
 Run echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
 Run sudo apt-get -qqy install oracle-java8-installer
 Run sudo apt-get update
-Run wget https://download.elastic.co/logstash/logstash/packages/debian/logstash_1.5.1-1_all.deb
-Run sudo dpkg -i logstash_1.5.1-1_all.deb
+Run sudo apt-get -y install vim
+
+Run wget https://download.elastic.co/logstash/logstash/packages/debian/logstash_2.2.2-1_all.deb
+Run sudo dpkg -i logstash_2.2.2-1_all.deb
 

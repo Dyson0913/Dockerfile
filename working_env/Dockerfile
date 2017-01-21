@@ -12,7 +12,7 @@ Run sudo pip install tornado
 Run sudo apt-get -y install build-essential
 #Run sudo apt-get -y install python-dev
 Run sudo pip install pyzmq
-
+Run sudo pip install redis
 
 # customer config
 

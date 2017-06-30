@@ -1,0 +1,10 @@
+
+- hosts: 104.199.238.93
+  tasks:
+    - name: test connection
+      ping:
+      register: message
+
+    - name: print debug message
+      debug:
+        msg: "{{ message }}"

@@ -1,0 +1,4 @@
+- name: Download docker
+  shell: curl -sSL https://get.docker.com | sudo sh
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+    

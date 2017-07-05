@@ -1,0 +1,6 @@
+
+- hosts: gcphost
+
+  roles:
+    - { role: jenkins , become: yes } 
+

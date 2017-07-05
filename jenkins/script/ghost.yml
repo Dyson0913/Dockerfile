@@ -1,5 +1,5 @@
 
-- hosts: gcphost
+- hosts: 104.199.238.93
   tasks:
     - name: test connection
       ping:

@@ -1,0 +1,6 @@
+
+- hosts: gcphost
+  roles:
+    - { role: git , become: yes } 
+    - { role: docker , become: yes } 
+

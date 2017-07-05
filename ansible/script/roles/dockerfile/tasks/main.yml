@@ -1,0 +1,4 @@
+- name: pull dockerfile repo
+  git:
+    repo: 'https://{{ githubuser }}:{{ githubpassword }}@github.com/Dyson0913/Dockerfile.git'
+    dest: /home/hhg4092/opensource 

@@ -1,0 +1,15 @@
+
+- hosts: gcphost
+
+  vars_prompt:
+    - name: "githubuser"
+      prompt: "Enter github username"
+      private: no
+    - name: "githubpassword"
+      prompt: "Enter github password"
+      private: yes
+
+
+  roles:
+    - { role: dockerfile , become: yes } 
+

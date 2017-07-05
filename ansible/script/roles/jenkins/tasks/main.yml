@@ -2,4 +2,9 @@
   shell: sh build.sh
   args:
     chdir: /home/hhg4092/opensource/jenkins
-    
+
+
+- name: active jenkins
+  shell: sh start.sh    
+  args:
+    chdir: /home/hhg4092/opensource/jenkins

@@ -26,4 +26,4 @@ Run sudo apt-get -y install jenkins
 
 # customer config
 #Run sudo pip install ansible-lint
-
+CMD sudo service jenkins start

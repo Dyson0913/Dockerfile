@@ -22,7 +22,7 @@ Run wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key
 Run sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 Run sudo apt-get update
 Run sudo apt-get -y install jenkins
-
+Run sudo pip install python-jenkins
 
 # customer config
 #Run sudo pip install ansible-lint

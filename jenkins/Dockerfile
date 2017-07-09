@@ -22,6 +22,9 @@ Run wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key
 Run sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 Run sudo apt-get update
 Run sudo apt-get -y install jenkins
+
+Run sudo apt-get -y install libxml2-dev libxslt1-dev python-dev
+Run sudo pip install lxml
 Run sudo pip install python-jenkins
 
 # customer config

@@ -24,7 +24,7 @@ Run sudo apt-get update
 Run sudo apt-get -y install jenkins
 
 Run sudo apt-get -y install libxml2-dev libxslt1-dev python-dev
-Run sudo pip install lxml
+Run sudo apt-get -y install python-lxml
 Run sudo pip install python-jenkins
 
 # customer config

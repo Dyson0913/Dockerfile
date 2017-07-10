@@ -7,16 +7,3 @@
     user: dyson
     password: dyson
 
-#  pip:
-#    name: lxml
-
-#  apt: 
-#    name: "{{ item }}"
-#  with_items:
-#    - libxml2-dev
-#    - libxslt-dev
-#    - python-dev
-
-#    name: python-jenkins
-    #name: python-pip
-

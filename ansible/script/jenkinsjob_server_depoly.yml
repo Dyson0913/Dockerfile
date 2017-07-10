@@ -2,5 +2,5 @@
 - hosts: gcphost
 
   roles:
-    - { role: jenkinsjob_server_depoly , become: yes } 
+    - { role: jenkinsjob_server_depoly ,become: yes, user: dyson, password: dyson } 
 

@@ -1,9 +1,42 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
-  <description>test shell execute</description>
+  <actions/>
+  <description>server pull</description>
   <keepDependencies>false</keepDependencies>
-  <properties/>
-  <scm class="hudson.scm.NullSCM"/>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>STAGE</name>
+          <description>dev = devloping stage
+prod = production stage</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Dev</string>
+              <string>Prod</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.3.2">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/Dyson0913/server.git</url>
+        <credentialsId>githubkey</credentialsId>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -12,10 +45,102 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>pwd
-touch helloworld.out</command>
+      <command>date=$(date +&quot;%d-%m-%y&quot;)
+touch &quot;$STAGE-$date-buid.txt&quot;
+cat $TEST_API_TOKEN</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers/>
-  <buildWrappers/>
+  <publishers>
+    <jenkins.plugins.publish__over__ssh.BapSshPublisherPlugin plugin="publish-over-ssh@1.17">
+      <consolePrefix>SSH: </consolePrefix>
+      <delegate>
+        <publishers>
+          <jenkins.plugins.publish__over__ssh.BapSshPublisher>
+            <configName>vultrl</configName>
+            <verbose>false</verbose>
+            <transfers>
+              <jenkins.plugins.publish__over__ssh.BapSshTransfer>
+                <remoteDirectory></remoteDirectory>
+                <sourceFiles>*.txt</sourceFiles>
+                <excludes></excludes>
+                <removePrefix></removePrefix>
+                <remoteDirectorySDF>false</remoteDirectorySDF>
+                <flatten>false</flatten>
+                <cleanRemote>false</cleanRemote>
+                <noDefaultExcludes>false</noDefaultExcludes>
+                <makeEmptyDirs>false</makeEmptyDirs>
+                <patternSeparator>[, ]+</patternSeparator>
+                <execCommand></execCommand>
+                <execTimeout>120000</execTimeout>
+                <usePty>false</usePty>
+                <useAgentForwarding>false</useAgentForwarding>
+              </jenkins.plugins.publish__over__ssh.BapSshTransfer>
+            </transfers>
+            <useWorkspaceInPromotion>false</useWorkspaceInPromotion>
+            <usePromotionTimestamp>false</usePromotionTimestamp>
+          </jenkins.plugins.publish__over__ssh.BapSshPublisher>
+        </publishers>
+        <continueOnError>false</continueOnError>
+        <failOnError>false</failOnError>
+        <alwaysPublishFromMaster>false</alwaysPublishFromMaster>
+        <hostConfigurationAccess class="jenkins.plugins.publish_over_ssh.BapSshPublisherPlugin" reference="../.."/>
+      </delegate>
+    </jenkins.plugins.publish__over__ssh.BapSshPublisherPlugin>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.58">
+      <recipientList>hhg4092@gmail.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList>hhg4092@gmail.com</recipientList>
+            <subject>build -fail</subject>
+            <body>oops~~~something got wrong</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>true</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>faile</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+        <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+          <email>
+            <recipientList>hhg4092@gmail.com</recipientList>
+            <subject>build -success</subject>
+            <body>congradulation! build success</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>true</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>aa</defaultSubject>
+      <defaultContent>bb</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
+      <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>$DEFAULT_REPLYTO</replyTo>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers>
+    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.12">
+      <bindings>
+        <org.jenkinsci.plugins.credentialsbinding.impl.FileBinding>
+          <credentialsId>7b228ba4-9af2-4fc2-bcb6-17c978b1c1e7</credentialsId>
+          <variable>TEST_API_TOKEN</variable>
+        </org.jenkinsci.plugins.credentialsbinding.impl.FileBinding>
+      </bindings>
+    </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
+  </buildWrappers>
 </project>

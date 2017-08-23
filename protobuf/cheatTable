@@ -2,3 +2,7 @@
 //complier
 protoc --python_out=\. example.proto
 
+//protc js (commonjs import
+/usr/local/bin/protoc --js_out=import_style=commonjs,binary:. lobby.proto
+
+--js_out=library=myproto_libs,binary:. lobby.proto

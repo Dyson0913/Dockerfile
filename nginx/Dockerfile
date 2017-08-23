@@ -9,4 +9,4 @@ Run sudo apt-get -y install nginx
 
 # customer config
 
-EXPOSE 8000 
+EXPOSE 8000

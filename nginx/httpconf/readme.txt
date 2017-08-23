@@ -3,7 +3,7 @@ sudo apt-get install nginx
 
 #link /etc/nginx/nginx.conf to your CWD to easy modify config  
 #before link ,please rm exist nginx.conf first
-ln -s /your-application-path/nginx.conf  nginx.conf
+ln -sf /httpconf/nginx.conf /etc/nginx/nginx.conf
 
 #setting your config
 please check nginx_setup.pdf for more info

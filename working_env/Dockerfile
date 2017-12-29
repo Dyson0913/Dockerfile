@@ -13,6 +13,7 @@ Run sudo apt-get -y install build-essential
 #Run sudo apt-get -y install python-dev
 Run sudo pip install pyzmq
 Run sudo pip install redis
+Run sudo apt-get install curl
 
 # customer config
 

@@ -1,3 +1,5 @@
+sudo apt-get install curl
+pip install protobuf
 
 //complier
 protoc --python_out=\. example.proto
@@ -6,3 +8,20 @@ protoc --python_out=\. example.proto
 /usr/local/bin/protoc --js_out=import_style=commonjs,binary:. lobby.proto
 
 --js_out=library=myproto_libs,binary:. lobby.proto
+
+//install proto3
+
+curl -OL https://github.com/google/protobuf/releases/download/v3.2.0/protoc-3.2.0-linux-x86_64.zip
+
+# Unzip
+unzip protoc-3.2.0-linux-x86_64.zip -d protoc3
+
+# Move protoc to /usr/local/bin/
+sudo mv protoc3/bin/* /usr/local/bin/
+
+# Move protoc3/include to /usr/local/include/
+sudo mv protoc3/include/* /usr/local/include/
+
+# Optional: change owner
+sudo chwon [user] /usr/local/bin/protoc
+sudo chwon -R [user] /usr/local/include/google

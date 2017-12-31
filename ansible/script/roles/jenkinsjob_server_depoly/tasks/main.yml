@@ -1,9 +1,8 @@
-
 - name: create jenkins job - server 
   jenkins_job:
     config: "{{lookup('template','templates/config.xml.j2')}}"
     name: server_test
-    url: "http://104.199.238.93:8080/"
+    url: "http://192.168.0.22:8080/"
     user: "{{user}}"
     password: "{{password}}"
 

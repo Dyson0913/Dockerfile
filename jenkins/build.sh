@@ -1,1 +1,1 @@
-sudo docker build -t="jenkins:dyson" .
+/usr/local/bin/docker build -t="jenkins:dyson" .

@@ -8,5 +8,6 @@ Run sudo apt-get -y install vim
 Run sudo apt-get -y install nginx
 
 # customer config
+COPY ./httpconf/ ./home/ 
 
-EXPOSE 8000
+#COPY ./data ./home/

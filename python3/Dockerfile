@@ -17,4 +17,4 @@ Run pip3 install --upgrade --force-reinstall 'requests'
 Run pip3 install apscheduler
 
 # customer config
-COPY ./project ./home
+#COPY ./project ./home

@@ -2,7 +2,6 @@
 FROM alpine:latest
 MAINTAINER Dyson <hhg4092@gmail.com>
 Run apk add --update
-Run apk add vim
 Run apk add py3-tornado
 Run apk add zeromq
 Run apk add py3-zmq

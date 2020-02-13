@@ -11,7 +11,7 @@ WORKDIR /etc/
 Run find redis.conf | xargs -i sed -i 's/bind 127.0.0.1/#bend 127.0.0.1/g' {}
 
 # replace password you want at PW
-Run find redis.conf | xargs -i sed -i 's/# requirepass foobared/requirepass PW/123456' {}
+Run find redis.conf | xargs -i sed -i 's/# requirepass foobared/requirepass PW/g' {}
 
 #redis-server --protected-mode no
 #ENTRYPOINT ["redis-server --protected-mode no"]

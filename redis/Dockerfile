@@ -2,7 +2,7 @@
 FROM alpine:latest
 MAINTAINER Dyson <hhg4092@gmail.com>:
 
-Run apk add --update vim redis openrc --no-cache
+Run apk add --update vim redis
 
 # customer config
 WORKDIR /etc/ 

@@ -3,6 +3,7 @@ FROM alpine:latest
 MAINTAINER Dyson <hhg4092@gmail.com>
 Run apk add --update nodejs npm
 Run npm install -g ionic
+Run npm i -g cordova
 
 
 

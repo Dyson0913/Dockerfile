@@ -1,1 +1,2 @@
-sudo docker build -t="dyson0913/nginx:dyson" .
+cd ../../
+sudo docker build -t="nginx:dyson" -f Dockerfile/nginx/Dockerfile .

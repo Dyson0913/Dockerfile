@@ -1,3 +1,3 @@
 cd ../../
-docker run -i -t -v $(pwd)/pomelo:/home -p 3001:3001 -p 3010:3010 -p 3014:3014 -p 3051:3051 -p 3052:3052 --name="pomelo" pomelo:dyson
+docker run -i -t -v $(pwd)/pomelo:/home -p 3001:3001 -p 3005:3005 -p 3014:3014 -p 3050:3050 -p 3051:3051 -p 3052:3052 -p 4050:4050 -p 4051:4051 -p 4052:4052 -p 6050:6050 -p 6051:6051 -p 6052:6052 --name="pomelo" pomelo:dyson
  

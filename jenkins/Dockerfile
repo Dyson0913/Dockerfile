@@ -6,3 +6,4 @@ Run apk --update add \
 #     ttf-dejavu \
     openrc --no-cache
 
+VOLUME [ “/sys/fs/cgroup” ]

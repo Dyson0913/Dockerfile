@@ -1,8 +1,7 @@
 #build test_enviroment
-FROM alpine:latest
+FROM ubuntu:latest
 MAINTAINER Dyson <hhg4092@gmail.com>
-Run apk --update add \
-    nginx \
+Run apt-get install nginx \
     vim 
 
 # customer config

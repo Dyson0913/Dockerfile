@@ -1,3 +1,3 @@
-sudo service nginx start
-sudo service nginx status
+service nginx start
+service nginx status
 
